@@ -40,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings. setJavaScriptEnabled (true);
 
+
+        //har lagt till ett webview-element
+        WebView webView= new WebView(this);
+        setContentView(webView);
+        webView.loadUrl("https://synonymer.se//");
+
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
