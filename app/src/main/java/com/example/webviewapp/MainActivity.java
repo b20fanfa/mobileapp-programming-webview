@@ -32,8 +32,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        //myWebView.loadUrl("http://www.example.com");
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
