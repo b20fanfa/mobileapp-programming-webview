@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings. setJavaScriptEnabled (true);
 
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
