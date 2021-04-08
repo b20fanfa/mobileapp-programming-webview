@@ -17,15 +17,22 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
-
+    private Object MyWebViewClient;
 
 
     public void showExternalWebPage(){
-        // TODO: Add your code for showing external web page here
+        WebView webView= new WebView(this);
+        setContentView(webView);
+        webView.loadUrl("https://synonymer.se//");
     }
 
     public void showInternalWebPage(){
-        // TODO: Add your code for showing internal web page here
+        //WebViewClient myWebViewClient = new WebViewClient();
+        //myWebView.setWebViewClient(myWebViewClient);
+        WebViewClient myWebViewClient = new WebViewClient();
+        myWebView.setWebViewClient((WebViewClient) MyWebViewClient);
+        myWebView.loadUrl("file:///android_asset/assignment2.html");
+        //myWebView.loadUrl("https://synonymer.se//");
     }
 
     @Override
@@ -35,24 +42,26 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        myWebView = findViewById(R.id.my_webview);
         //myWebView.loadUrl("http://www.example.com");
 
         WebSettings webSettings = myWebView.getSettings();
         webSettings. setJavaScriptEnabled (true);
 
 
+
+        //myWebView.loadUrl("file:///android_asset/assignment2.html");
+
         //har lagt till ett webview-element EXTERNAL
-        //WebView webView= new WebView(this);
+        // WebView webView= new WebView(this);
         //setContentView(webView);
         //webView.loadUrl("https://synonymer.se//");
 
-//LA till INTERNAL
-        WebViewClient myWebViewClient = new WebViewClient();
-        myWebView.setWebViewClient(myWebViewClient);
-        myWebView.loadUrl("https://synonymer.se//");
-
-
+        //LA till INTERNAL
+        //WebViewClient myWebViewClient = new WebViewClient();
+        //myWebView.setWebViewClient(myWebViewClient);
+        // myWebView.loadUrl("https://synonymer.se//");
+        //myWebView.loadUrl("file:///android_asset/assignment2.html");
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -85,15 +94,20 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
-            return true;
+            showExternalWebPage();
+            //return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
-            return true;
+            showInternalWebPage();
+            //return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class MyWebViewClient {
     }
 }
 
