@@ -32,13 +32,13 @@ Här sparar man URL koden och medför den i sitt projekt , med hjälp av ”Get 
 ```
 
 - Nästa steg var att skapa ett ID till WebView elementet :
-  ```
-      android:id=”@+id/my_webview"
-   ```
+ ```
+    android:id=”@+id/my_webview"
+ ```
 
 
 - Nästa steg var att skapa ett ”Private member variable” som ska heta ”myWebView”.
-``
+```
   private WebView myWebView;
 ```
 
@@ -48,12 +48,12 @@ innan (private WebView myWebView;). Därför gjordes denna ändring.
 Från:
  ```
  WebView myWebView = (WebView) findViewById(R.id.my_webview);
- ``
+```
 
 Till:
  ```
- myWebView = findViewById(R.id.my_webview);
-``
+ myW`ebView = findViewById(R.id.my_webview);
+ ```
 
 
 
@@ -71,7 +71,7 @@ I filen skapades en enkel sida som hade en rubrik som lydde ”Fannys Internal W
 
 - Nästa steg var att man skulle implementera en External Webpage och en Internal Webpage med hjälp av ”loadUrl()".
 I external webpage la dess denna kod in innanför ”public void showExternalWebPage funktionen.
-``
+```
     public void showExternalWebPage(){
         WebView webView= new WebView(this);
         setContentView(webView);
@@ -98,7 +98,7 @@ När den nya variablen skapades lades denna kod som befinner sig längst ned.
 ```
  private class MyWebViewClient {
   }
-``
+ ```
 
 Här är bilder från uppgiften
 ![external bilden](external.png)
