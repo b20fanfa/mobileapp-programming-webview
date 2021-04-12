@@ -1,5 +1,6 @@
 package com.example.webviewapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,24 +18,17 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
-    private Object MyWebViewClient;
 
 
     public void showExternalWebPage(){
-        WebView webView= new WebView(this);
-        setContentView(webView);
-        webView.loadUrl("https://synonymer.se//");
+        myWebView.loadUrl("https://synonymer.se//");
     }
 
     public void showInternalWebPage(){
-        //WebViewClient myWebViewClient = new WebViewClient();
-        //myWebView.setWebViewClient(myWebViewClient);
-        WebViewClient myWebViewClient = new WebViewClient();
-        myWebView.setWebViewClient((WebViewClient) MyWebViewClient);
         myWebView.loadUrl("file:///android_asset/assignment2.html");
-        //myWebView.loadUrl("https://synonymer.se//");
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,26 +37,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         myWebView = findViewById(R.id.my_webview);
-        //myWebView.loadUrl("http://www.example.com");
+        WebViewClient myWebViewClient = new WebViewClient();
+        myWebView.setWebViewClient(myWebViewClient);
 
         WebSettings webSettings = myWebView.getSettings();
-        webSettings. setJavaScriptEnabled (true);
-
-
-
-        //myWebView.loadUrl("file:///android_asset/assignment2.html");
-
-        //har lagt till ett webview-element EXTERNAL
-        // WebView webView= new WebView(this);
-        //setContentView(webView);
-        //webView.loadUrl("https://synonymer.se//");
-
-        //LA till INTERNAL
-        //WebViewClient myWebViewClient = new WebViewClient();
-        //myWebView.setWebViewClient(myWebViewClient);
-        // myWebView.loadUrl("https://synonymer.se//");
-        //myWebView.loadUrl("file:///android_asset/assignment2.html");
-
+        webSettings.setJavaScriptEnabled(true);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,19 +72,17 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
             showExternalWebPage();
-            //return true;
+            return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
             showInternalWebPage();
-            //return true;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private class MyWebViewClient {
-    }
 }
 
