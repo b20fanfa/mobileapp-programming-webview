@@ -2,7 +2,6 @@
 # Rapport
 
 **Skriv din rapport här!**
-
 Denna uppgift gjordes efter punkterna som fanns. OBS. När jag ändrade något gjordes alltid en ”Commit och Push”.
 
 - Den första punkten var att ”Fork:a” ett befintligt projekt som fanns på Github, via LenaSYS/mobileapp-programming-webview.
@@ -32,12 +31,13 @@ Här sparar man URL koden och medför den i sitt projekt , med hjälp av ”Get 
 ```
 
 - Nästa steg var att skapa ett ID till WebView elementet :
- ```
-    android:id=”@+id/my_webview"
- ```
+  ```
+      android:id=”@+id/my_webview"
+   ```
 
 
 - Nästa steg var att skapa ett ”Private member variable” som ska heta ”myWebView”.
+
 ```
   private WebView myWebView;
 ```
@@ -48,13 +48,11 @@ innan (private WebView myWebView;). Därför gjordes denna ändring.
 Från:
  ```
  WebView myWebView = (WebView) findViewById(R.id.my_webview);
+ ```
+Till:
+ ```
+ myWebView = findViewById(R.id.my_webview);
 ```
-
-Till:
- ```
- myW`ebView = findViewById(R.id.my_webview);
- ```
-
 
 
 - Nästa steg var att lägga till ”Javascript execution” i min WebViewClien. Här lades denna kod in under tidigare kod stycke,
@@ -69,40 +67,43 @@ innanför onCreate() funktionen.
 I filen skapades en enkel sida som hade en rubrik som lydde ”Fannys Internal Webpage”.
 
 
-- Nästa steg var att man skulle implementera en External Webpage och en Internal Webpage med hjälp av ”loadUrl()".
-I external webpage la dess denna kod in innanför ”public void showExternalWebPage funktionen.
+- Nästa steg var att man skulle implementera  en External Webpage och en Internal Webpage med hjälp av ”loadURL.
+I external webpage skrevs endast en URL kod in innanför ”public void showExternalWebPage funktionen, det beror på att det är det ända man ska göra. Man kan göra på två sätt, man kan skapa en webview, antingen använder man ”findViewById eller new WebView. Felet innan var att båda användes, förutom det användes fel variabel namn. Man kan använda samma variabel när man vill kunna byta hemsida i samma webview, med det sagt ska man använda samma variabel alltså, myWebView
+
 ```
-    public void showExternalWebPage(){
-        WebView webView= new WebView(this);
-        setContentView(webView);
-        webView.loadUrl("https://synonymer.se//");
-    }
+public void showExternalWebPage(){
+    myWebView.loadUrl("https://synonymer.se//");
+}
 ```
 
 
 I internal Webpage skulle man få upp sin egna html fil.
-Här var jag tvungen att definiera ”MyWebViewClient” med hjälp av att skapa en ny ”Private member variable”.
-Sedan skrev man in variablen MyWebViewClient innanför ”public void showInternalWebPage funktionen.
+Här behövdes endast URL koden för min html fil, som lades innanför ”public void showInternalWebPage funktionen.
+
 ```
-    public void showInternalWebPage(){
-        WebViewClient myWebViewClient = new WebViewClient();
-        myWebView.setWebViewClient((WebViewClient) MyWebViewClient);
-        myWebView.loadUrl("file:///android_asset/assignment2.html");
-     }
+public void showInternalWebPage(){
+    myWebView.loadUrl("file:///android_asset/assignment2.html");
+}
 ```
 
 
-
-När den nya variablen skapades lades denna kod som befinner sig längst ned.
+Koden som fanns innan skulle läggas in i funktionen under/efter findViweByID annars kommer inte myWebView inte innehålla något värde.
+`
+```
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    WebViewClient myWebViewClient = new WebViewClient();
+    myWebView.setWebViewClient(myWebViewClient);`
+    }
 
 ```
- private class MyWebViewClient {
-  }
- ```
 
 Här är bilder från uppgiften
-![external bilden](external.png)
-![internal bilden](internal.png)
+![](external.png)
+![](internal.png)
+
+
+
 
 
 INSTRUKTIONER
@@ -135,8 +136,8 @@ function errorCallback(error) {
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](external.png)
-![](internal.png)
+![](.png)
+![](.png)
 
 
 Läs gärna:
